@@ -1,0 +1,16 @@
+https://www.hackerrank.com/contests/code-arrays-internship/challenges/towers-5/problem
+
+int minimize(vector<int> height, int k) {
+    sort(height.begin(), height.end());
+    int n=height.size();
+    int ans = height[n-1] - height[0];
+    int minH = height[0]+k, maxH=height[n-1]-k;
+    for(int i=0;i<n-1;i++){
+        int sm=min(minH,height[i+1]-k);
+        int lr=max(maxH,height[i]+k);
+        if(sm<0) continue;
+        ans = min(ans, lr-sm);
+    }
+    return ans;
+    
+}
