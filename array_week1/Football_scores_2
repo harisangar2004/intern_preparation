@@ -1,3 +1,5 @@
+https://www.hackerrank.com/contests/code-arrays-internship/challenges/football-scores-2/problem
+
 vector<int> score(vector<int> team1, vector<int> team2) {
     
     sort(team1.begin(),team1.end());
