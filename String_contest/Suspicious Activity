@@ -1,0 +1,48 @@
+vector<string> suspicious(vector<string> logs, int threshold) {
+    vector<string>ans;
+    map<string, int> m;
+    int n=logs.size();
+    for(int i=0;i<n;i++){
+        string temp="";
+        int count=0;
+        string temp1="";
+        string temp2="";
+        for(int j=0;j<logs[i].size();j++){
+            if(logs[i][j]!=' '){
+                temp+=logs[i][j];
+            }
+            else if(count==0 and logs[i][j]==' '){
+                temp1+=temp;
+                temp="";
+                count++;
+            }
+            else if(count==1 and logs[i][j]==' '){
+                temp2+=temp;
+                count++;
+                temp="";
+            }
+            if(count==2) break;
+        }        
+            if(temp1!=temp2){
+                m[temp1]++;
+                m[temp2]++;
+            }
+            else{
+                m[temp1]++;
+            }
+    }
+    vector<int>v;
+    for(auto x:m){
+        if(x.second>=threshold) {
+            int y=stoi(x.first);
+            v.push_back(y);
+        }
+    }
+    sort(v.begin(), v.end());
+    for(int x:v){
+        string temp=to_string(x);
+        ans.push_back(temp);
+    }
+    return ans;
+
+}
