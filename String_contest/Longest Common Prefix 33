@@ -1,0 +1,25 @@
+
+string prefix_len(vector<string> strs) {
+    int n=strs.size();
+    int minLen=INT_MAX;
+    string ans="";
+    for(int i=0;i<n;i++){
+        int q=strs[i].size();
+        minLen = min(minLen,q);
+    }
+    for(int i=0;i<minLen;i++){
+        string temp="";
+        temp+=strs[0][i];
+        int count=0;
+        for(int j=0;j<n;j++){
+            if(strs[0][i]==strs[j][i])count++;
+        }
+        if(count==n){
+            ans+=temp;
+            temp="";
+        }else{
+            return ans;
+        }
+    }
+    return ans;
+}
